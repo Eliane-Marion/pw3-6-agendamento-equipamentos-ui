@@ -1,0 +1,25 @@
+.topo {
+  background: var(--primaria);
+  color: #fff;
+  padding: 16px 0;
+  margin-bottom: 24px;
+}
+
+.topo-conteudo {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.marca {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.subtitulo {
+  opacity: 0.85;
+  font-size: 0.95rem;
+}

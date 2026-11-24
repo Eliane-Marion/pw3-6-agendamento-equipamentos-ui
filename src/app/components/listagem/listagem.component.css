@@ -1,0 +1,39 @@
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+h1 { margin: 0; font-size: 1.6rem; }
+.resumo { margin: 4px 0 0; color: var(--cinza); }
+
+.tabela-card { padding: 0; overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; }
+
+th, td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--borda);
+  white-space: nowrap;
+}
+
+th {
+  background: #f8f9fb;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--cinza);
+}
+
+tr:last-child td { border-bottom: none; }
+tr.inativa td { color: #888; }
+
+.armario { font-weight: 700; color: var(--primaria); }
+
+.col-acoes { text-align: right; }
+.col-acoes .btn { margin-left: 6px; }
+
+.vazio { text-align: center; color: var(--cinza); padding: 32px; }

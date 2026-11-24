@@ -1,0 +1,81 @@
+/* Estilos globais */
+:root {
+  --primaria: #1e4b8f;
+  --primaria-escura: #163a6f;
+  --sucesso: #1f8a4c;
+  --perigo: #c0392b;
+  --aviso: #d68910;
+  --cinza: #6c757d;
+  --borda: #dee2e6;
+  --fundo: #f4f6f9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: var(--fundo);
+  color: #222;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  background: var(--cinza);
+}
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn-primario { background: var(--primaria); }
+.btn-primario:hover:not(:disabled) { background: var(--primaria-escura); }
+.btn-sucesso { background: var(--sucesso); }
+.btn-perigo { background: var(--perigo); }
+.btn-aviso { background: var(--aviso); }
+.btn-pequeno { padding: 5px 10px; font-size: 0.8rem; }
+
+/* Mensagens de feedback */
+.alerta {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.alerta-sucesso { background: #e3f4ea; color: #145c33; border: 1px solid #b7e1c7; }
+.alerta-erro { background: #fbe7e5; color: #8a2419; border: 1px solid #f1c0ba; }
+.alerta button { background: none; border: none; font-size: 1.1rem; cursor: pointer; color: inherit; }
+
+/* Badges de status */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.badge-ativa { background: #d4f1df; color: #146c3a; }
+.badge-encerrada { background: #e2e3e5; color: #41464b; }
