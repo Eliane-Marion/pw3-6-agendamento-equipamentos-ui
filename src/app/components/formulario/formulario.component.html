@@ -1,0 +1,73 @@
+<div class="card formulario-card">
+  <h1>{{ modoEdicao ? 'Editar reserva' : 'Nova reserva' }}</h1>
+  <p class="descricao">
+    {{ modoEdicao ? 'Altere os dados ou o período da reserva.' : 'Preencha os dados para reservar um armário.' }}
+  </p>
+
+  @if (mensagemErro) {
+    <div class="alerta alerta-erro">
+      <span>⚠ {{ mensagemErro }}</span>
+      <button type="button" (click)="mensagemErro = ''" aria-label="Fechar">×</button>
+    </div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="salvar()" novalidate>
+
+    <div class="campo">
+      <label for="numeroArmario">Número do armário *</label>
+      <input id="numeroArmario" type="number" min="1" formControlName="numeroArmario"
+             [class.erro]="invalido('numeroArmario')" placeholder="Ex.: 12">
+      @if (invalido('numeroArmario')) {
+        @if (erro('numeroArmario', 'required')) {
+          <small class="msg-erro">Informe o número do armário.</small>
+        } @else if (erro('numeroArmario', 'min')) {
+          <small class="msg-erro">O número do armário deve ser maior ou igual a 1.</small>
+        }
+      }
+    </div>
+
+    <div class="campo">
+      <label for="nomeAluno">Nome do aluno *</label>
+      <input id="nomeAluno" type="text" formControlName="nomeAluno"
+             [class.erro]="invalido('nomeAluno')" placeholder="Nome completo">
+      @if (invalido('nomeAluno')) {
+        @if (erro('nomeAluno', 'required')) {
+          <small class="msg-erro">Informe o nome do aluno.</small>
+        } @else if (erro('nomeAluno', 'minlength')) {
+          <small class="msg-erro">O nome deve ter pelo menos 3 caracteres.</small>
+        } @else if (erro('nomeAluno', 'maxlength')) {
+          <small class="msg-erro">O nome deve ter no máximo 100 caracteres.</small>
+        }
+      }
+    </div>
+
+    <div class="linha">
+      <div class="campo">
+        <label for="dataInicio">Data de início *</label>
+        <input id="dataInicio" type="date" formControlName="dataInicio"
+               [class.erro]="invalido('dataInicio')">
+        @if (invalido('dataInicio') && erro('dataInicio', 'required')) {
+          <small class="msg-erro">Informe a data de início.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="dataFim">Data de fim *</label>
+        <input id="dataFim" type="date" formControlName="dataFim"
+               [class.erro]="invalido('dataFim') || periodoInvalido">
+        @if (invalido('dataFim') && erro('dataFim', 'required')) {
+          <small class="msg-erro">Informe a data de fim.</small>
+        } @else if (periodoInvalido) {
+          <small class="msg-erro">A data de fim deve ser posterior à data de início.</small>
+        }
+      </div>
+    </div>
+
+    <div class="acoes">
+      <a routerLink="/reservas" class="btn">Cancelar</a>
+      <button type="submit" class="btn btn-primario" [disabled]="salvando">
+        {{ salvando ? 'Salvando...' : (modoEdicao ? 'Salvar alterações' : 'Cadastrar reserva') }}
+      </button>
+    </div>
+  </form>
+</div>

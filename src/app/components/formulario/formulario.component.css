@@ -1,0 +1,25 @@
+.formulario-card { max-width: 620px; margin: 0 auto; }
+
+h1 { margin: 0 0 4px; font-size: 1.5rem; }
+.descricao { margin: 0 0 20px; color: var(--cinza); }
+
+.campo { display: flex; flex-direction: column; margin-bottom: 16px; flex: 1; }
+
+label { font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+
+input {
+  padding: 10px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+input:focus { outline: none; border-color: var(--primaria); box-shadow: 0 0 0 3px rgba(30, 75, 143, 0.15); }
+input.erro { border-color: var(--perigo); }
+
+.msg-erro { color: var(--perigo); margin-top: 5px; font-size: 0.8rem; }
+
+.linha { display: flex; gap: 16px; flex-wrap: wrap; }
+.linha .campo { min-width: 200px; }
+
+.acoes { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
