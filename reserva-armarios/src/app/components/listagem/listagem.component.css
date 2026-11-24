@@ -1,0 +1,54 @@
+.container {
+    padding: 20px;
+}
+
+.listar-reservas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card-reserva {
+    width: 280px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.card-reserva h3{
+    margin-top: 0;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.ativo {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.inativo {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+button {
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}

@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>Reservas de Armários</h2>
+
+    <button routerLink="/reservas/nova">
+        Nova reserva
+    </button>
+
+    @if (reservas.length > 0) {
+        <div class="lista-reservas">
+            @for (reserva of reservas; track reserva.id){
+                <div class="card-reserva">
+                    <h3>Armário {{ reserva.numeroArmario }}</h3>
+
+                    <p><strong>Aluno:</strong> {{ reserva.nomeAluno }}</p>
+
+                    <p>
+                        <strong>Data de início:</strong>
+                        {{ reserva.dataInicio | date:'dd/MM/yyyy' }}
+                    </p>
+
+                    <p>
+                        <strong>Data de término:</strong>
+                        {{ reserva.dataFim | date:'dd/MM/yyyy' }}
+                    </p>
+
+                    <span class="badge"
+                         [class.ativo]="reserva.ativo"
+                         [class.inativo]="!reserva.ativo">
+                        {{ reserva.ativo ? 'ATIVO' : 'INATIVO' }}
+                    </span>
+
+                    <button
+                     (click)="executarRegra(reserva)">
+                        {{ reserva.ativo ? 'Desativar reserva' : 'Ativar reserva' }}
+                    </button>
+
+                    <button [routerLink]="['/reservas/editar', reserva.id]">
+                        Editar
+                    </button>
+                </div>
+            }
+        </div>
+    } @else {
+        <p>Nenhuma reserva encontrada.</p>
+    }
+</div>

@@ -1,0 +1,72 @@
+<div class="container">
+    <h2>{{ editando ? 'Editar Reserva' : 'Cadastrar Reserva' }}</h2>
+
+    <form [formGroup]="formulario" (ngSubmit)="salvar()">
+        <div class="campo">
+            <label>Número do armário:</label>
+
+            <input type="number" formControlName="numeroArmario">
+
+            @if (formulario.get('numeroArmario')?.touched && formulario.get('numeroArmario')?.hasError('required')) {
+                <small>O número do armário é obrigatório.</small>
+            }
+
+            @if (formulario.get('numeroArmario')?.hasError('min')) {
+                <small>O número deve ser maior que zero.</small>
+            }
+        </div>
+
+        <div class="campo">
+            <label>Nome do aluno:</label>
+
+            <input type="text" formControlName="nomeAluno">
+
+            @if(formulario.get('nomeAluno')?.touched && formulario.get('nomeAluno')?.hasError('required')) {
+                <small>O nome do aluno é obrigatório.</small>
+            }
+
+            @if(formulario.get('nomeAluno')?.hasError('maxlength')) {
+                <small>O nome deve ter no máximo 100 caracteres.</small>
+            }
+        </div>
+
+        <div class="campo">
+            <label>Data de início:</label>
+
+            <input type="date" formControlName="dataInicio">
+
+            @if(formulario.get('dataInicio')?.touched && formulario.get('dataInicio')?.hasError('required')) {
+                <small>A data de início é obrigatória.</small>
+            }
+        </div>
+
+        <div class="campo">
+            <label>Data de término:</label>
+
+            <input type="date" formControlName="dataFim">
+
+            @if(formulario.get('dataFim')?.touched && formulario.get('dataFim')?.hasError('required')) {
+                <small>A data de término é obrigatória.</small>
+            }
+        </div>
+
+        <div class="campo">
+            <label>Status:</label>
+
+            <select formControlName="ativo">
+                <option [ngValue]="true">Ativo</option>
+                <option [ngValue]="false">Inativo</option>
+            </select>
+        </div>
+
+        <div class="botoes">
+            <button type="submit">
+                {{ editando ? 'Salvar alterações' : 'Cadastrar reserva' }}
+            </button>
+
+            <button type="button" (click)="cancelar()">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</div>
